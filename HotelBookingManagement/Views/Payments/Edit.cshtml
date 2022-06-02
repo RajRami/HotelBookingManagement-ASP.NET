@@ -1,0 +1,69 @@
+﻿@model HotelBookingManagement.Models.Payment
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Payment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PaymentId" />
+            <div class="form-group">
+                <label asp-for="TotalCharge" class="control-label"></label>
+                <input asp-for="TotalCharge" class="form-control" />
+                <span asp-validation-for="TotalCharge" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreditCardNumber" class="control-label"></label>
+                <input asp-for="CreditCardNumber" class="form-control" />
+                <span asp-validation-for="CreditCardNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CardHolder" class="control-label"></label>
+                <input asp-for="CardHolder" class="form-control" />
+                <span asp-validation-for="CardHolder" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpiryDate" class="control-label"></label>
+                <input asp-for="ExpiryDate" class="form-control" />
+                <span asp-validation-for="ExpiryDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaymentDate" class="control-label"></label>
+                <input asp-for="PaymentDate" class="form-control" />
+                <span asp-validation-for="PaymentDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HotelId" class="control-label"></label>
+                <select asp-for="HotelId" class="form-control" asp-items="ViewBag.HotelId"></select>
+                <span asp-validation-for="HotelId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BookingID" class="control-label"></label>
+                <select asp-for="BookingID" class="form-control" asp-items="ViewBag.BookingID"></select>
+                <span asp-validation-for="BookingID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GuestId" class="control-label"></label>
+                <select asp-for="GuestId" class="form-control" asp-items="ViewBag.GuestId"></select>
+                <span asp-validation-for="GuestId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
