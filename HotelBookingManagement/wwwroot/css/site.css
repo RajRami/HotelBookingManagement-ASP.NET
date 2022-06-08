@@ -1,6 +1,8 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
+@import url('https://fonts.googleapis.com/css2?family=Baloo+Bhai+2&family=Baloo+Bhaijaan+2:wght@500&display=swap');
+
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -9,13 +11,17 @@ a.navbar-brand {
 
 /* Provide sufficient contrast against white background */
 a {
-  color: #0366d6;
+    color: #009688;
 }
 
 .btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
+    color: #fff;
+    background-color: #009688;
+    border-color: #1861ac;
+}
+
+.navbar-dark {
+    background-color: #607D8B;
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
@@ -57,10 +63,19 @@ html {
   position: relative;
   min-height: 100%;
 }
-
+* {
+    font-family: 'Baloo Bhai 2', cursive;
+}
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    font-family: 'Baloo Bhai 2', cursive;
+}
+body p {
+    font-size:large;
+}
+#pmain{
+    font-size:x-large;
 }
 .footer {
   position: absolute;
