@@ -38,7 +38,10 @@
                     @Html.DisplayFor(modelItem => item.RoomType)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Photo)
+                    @if (item.Photo != null)
+                    {
+                        <img src="~/img/@item.Photo" alt="Can't load image" class="imgSize"/>
+                    }
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)

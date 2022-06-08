@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HotelBookingManagement.Data;
 using HotelBookingManagement.Models;
+using Microsoft.AspNetCore.Http;
+using System.IO;
 
 namespace HotelBookingManagement.Controllers
 {
@@ -59,10 +61,18 @@ namespace HotelBookingManagement.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RoomID,RoomType,Description,Photo,Price,HotelId,GuestId")] Room room)
+        public async Task<IActionResult> Create([Bind("RoomID,RoomType,Description,Price,HotelId,GuestId")] Room room, IFormFile Photo)
         {
             if (ModelState.IsValid)
             {
+                //To upload a photo
+                if (Photo != null)
+                {
+                    var fileName = UploadPhoto(Photo);
+                    room.Photo = fileName; // set the unique file name before saving it to the daatase
+
+                }
+
                 _context.Add(room);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -95,7 +105,7 @@ namespace HotelBookingManagement.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("RoomID,RoomType,Description,Photo,Price,HotelId,GuestId")] Room room)
+        public async Task<IActionResult> Edit(int id, [Bind("RoomID,RoomType,Description,Price,HotelId,GuestId")] Room room, IFormFile Photo, string CurrentPhoto)
         {
             if (id != room.RoomID)
             {
@@ -106,6 +116,18 @@ namespace HotelBookingManagement.Controllers
             {
                 try
                 {
+                    //To upload a photo
+                    if (Photo != null)
+                    {
+                        var fileName = UploadPhoto(Photo);
+                        room.Photo = fileName; // set the unique file name before saving it to the daatase
+                    }
+                    else
+                    {
+                        //To keep the current photo if no new photo uploaded
+                        room.Photo = CurrentPhoto;
+                    }
+
                     _context.Update(room);
                     await _context.SaveChangesAsync();
                 }
@@ -161,6 +183,25 @@ namespace HotelBookingManagement.Controllers
         private bool RoomExists(int id)
         {
             return _context.Rooms.Any(e => e.RoomID == id);
+        }
+
+        private static string UploadPhoto(IFormFile Photo)
+        {
+            //Get temporary location
+            var filePath = Path.GetTempFileName();
+
+            //GUID to get unique image name
+            var fileName = Guid.NewGuid().ToString() + "-" + Photo.FileName;
+
+            //Set destination folder dynamically so it works both locally and on the server
+            var uploadPath = System.IO.Directory.GetCurrentDirectory() + "\\wwwroot\\img\\" + fileName;
+
+            //copy the file
+            using (var stream = new FileStream(uploadPath, FileMode.Create))
+            {
+                Photo.CopyTo(stream);
+            }
+            return fileName;
         }
     }
 }
