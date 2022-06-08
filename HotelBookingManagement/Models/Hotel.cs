@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,7 +9,10 @@ namespace HotelBookingManagement.Models
     public class Hotel
     {
         public int HotelId { get; set; }
+
+        [Required]
         public string Name { get; set; }
+        public string Description { get; set; }
         public int NumberOfRooms { get; set; }
         public string ContactNum { get; set; }
         public string AddressLine1 { get; set; }

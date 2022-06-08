@@ -9,7 +9,7 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<table class="table table-striped sortable">
     <thead>
         <tr>
             <th>
@@ -40,38 +40,39 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalCharge)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreditCardNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CardHolder)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ExpiryDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PaymentDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Hotel.HotelId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Booking.BookingId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Guest.GuestId)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.PaymentId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.PaymentId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.PaymentId">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalCharge)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreditCardNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CardHolder)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExpiryDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Hotel.HotelId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Booking.BookingId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Guest.GuestId)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.PaymentId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.PaymentId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.PaymentId">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
