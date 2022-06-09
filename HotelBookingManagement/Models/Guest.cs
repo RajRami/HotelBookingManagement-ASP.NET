@@ -21,7 +21,7 @@ namespace HotelBookingManagement.Models
         public string PostalCode { get; set; }
 
         //Reference to child object
-        public List<Room> Rooms { get; set; }
+        //public List<Room> Rooms { get; set; }
         public List<Booking> Bookings { get; set; }
         public List<Payment> Payments { get; set; }
     }

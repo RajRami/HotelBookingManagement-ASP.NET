@@ -24,7 +24,7 @@ namespace HotelBookingManagement.Controllers
         // GET: Rooms
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.Rooms.Include(r => r.Guest).Include(r => r.Hotel);
+            var applicationDbContext = _context.Rooms.Include(r => r.Hotel);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -37,7 +37,7 @@ namespace HotelBookingManagement.Controllers
             }
 
             var room = await _context.Rooms
-                .Include(r => r.Guest)
+                //.Include(r => r.Guest)
                 .Include(r => r.Hotel)
                 .FirstOrDefaultAsync(m => m.RoomID == id);
             if (room == null)
@@ -51,7 +51,7 @@ namespace HotelBookingManagement.Controllers
         // GET: Rooms/Create
         public IActionResult Create()
         {
-            ViewData["GuestId"] = new SelectList(_context.Guests, "GuestId", "GuestId");
+            //ViewData["GuestId"] = new SelectList(_context.Guests, "GuestId", "GuestId");
             ViewData["HotelId"] = new SelectList(_context.Hotels, "HotelId", "HotelId");
             return View();
         }
@@ -61,7 +61,7 @@ namespace HotelBookingManagement.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("RoomID,RoomType,Description,Price,HotelId,GuestId")] Room room, IFormFile Photo)
+        public async Task<IActionResult> Create([Bind("RoomID,RoomType,Description,Price,HotelId")] Room room, IFormFile Photo)
         {
             if (ModelState.IsValid)
             {
@@ -77,7 +77,7 @@ namespace HotelBookingManagement.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GuestId"] = new SelectList(_context.Guests, "GuestId", "GuestId", room.GuestId);
+            //ViewData["GuestId"] = new SelectList(_context.Guests, "GuestId", "GuestId", room.GuestId);
             ViewData["HotelId"] = new SelectList(_context.Hotels, "HotelId", "HotelId", room.HotelId);
             return View(room);
         }
@@ -95,7 +95,7 @@ namespace HotelBookingManagement.Controllers
             {
                 return NotFound();
             }
-            ViewData["GuestId"] = new SelectList(_context.Guests, "GuestId", "GuestId", room.GuestId);
+            //ViewData["GuestId"] = new SelectList(_context.Guests, "GuestId", "GuestId", room.GuestId);
             ViewData["HotelId"] = new SelectList(_context.Hotels, "HotelId", "HotelId", room.HotelId);
             return View(room);
         }
@@ -105,7 +105,7 @@ namespace HotelBookingManagement.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("RoomID,RoomType,Description,Price,HotelId,GuestId")] Room room, IFormFile Photo, string CurrentPhoto)
+        public async Task<IActionResult> Edit(int id, [Bind("RoomID,RoomType,Description,Price,HotelId")] Room room, IFormFile Photo, string CurrentPhoto)
         {
             if (id != room.RoomID)
             {
@@ -144,7 +144,7 @@ namespace HotelBookingManagement.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["GuestId"] = new SelectList(_context.Guests, "GuestId", "GuestId", room.GuestId);
+            //ViewData["GuestId"] = new SelectList(_context.Guests, "GuestId", "GuestId", room.GuestId);
             ViewData["HotelId"] = new SelectList(_context.Hotels, "HotelId", "HotelId", room.HotelId);
             return View(room);
         }
@@ -158,7 +158,7 @@ namespace HotelBookingManagement.Controllers
             }
 
             var room = await _context.Rooms
-                .Include(r => r.Guest)
+                //.Include(r => r.Guest)
                 .Include(r => r.Hotel)
                 .FirstOrDefaultAsync(m => m.RoomID == id);
             if (room == null)

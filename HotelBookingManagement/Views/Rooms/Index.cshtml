@@ -24,9 +24,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Hotel)
             </th>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Guest)
-            </th>
+            </th>*@
             <th></th>
         </tr>
     </thead>
@@ -49,9 +49,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Hotel.HotelId)
                 </td>
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.Guest.GuestId)
-                </td>
+                </td>*@
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.RoomID">Edit</a> |
                     <a asp-action="Details" asp-route-id="@item.RoomID">Details</a> |

@@ -21,11 +21,11 @@ namespace HotelBookingManagement.Models
         [Range(10,5000)]
         public double Price { get; set; }
         public int HotelId { get; set; }
-        public int GuestId { get; set; }
+        //public int GuestId { get; set; }
 
         //Parent model reference
         public Hotel Hotel { get; set; }
-        public Guest Guest { get; set; }
+        //public Guest Guest { get; set; }
 
         //Reference to child object
         public List<Booking> Bookings { get; set; }
