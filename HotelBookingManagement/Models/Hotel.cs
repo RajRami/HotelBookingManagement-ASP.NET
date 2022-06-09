@@ -13,13 +13,19 @@ namespace HotelBookingManagement.Models
         [Required]
         public string Name { get; set; }
         public string Description { get; set; }
+
+        [Range(1,500)]
         public int NumberOfRooms { get; set; }
         public string ContactNum { get; set; }
         public string AddressLine1 { get; set; }
         public string City { get; set; }
         public string State { get; set; }
         public string Country { get; set; }
+
+        [StringLength(6)]
         public string PostalCode { get; set; }
+
+        [Range(1,5)]
         public double StarRating { get; set; }
 
         //Reference to child object

@@ -18,6 +18,7 @@ namespace HotelBookingManagement.Models
         public string Photo { get; set; }
 
         [DisplayFormat(DataFormatString = "{0:c}")] // MS currency format
+        [Range(10,5000)]
         public double Price { get; set; }
         public int HotelId { get; set; }
         public int GuestId { get; set; }
