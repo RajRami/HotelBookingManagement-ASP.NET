@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
@@ -20,6 +21,8 @@ namespace HotelBookingManagement.Models
         [DisplayFormat(DataFormatString = "{0:c}")] // MS currency format
         [Range(10,5000)]
         public double Price { get; set; }
+
+        [DisplayName("Hotel")]
         public int HotelId { get; set; }
         //public int GuestId { get; set; }
 

@@ -52,7 +52,7 @@ namespace HotelBookingManagement.Controllers
         public IActionResult Create()
         {
             //ViewData["GuestId"] = new SelectList(_context.Guests, "GuestId", "GuestId");
-            ViewData["HotelId"] = new SelectList(_context.Hotels, "HotelId", "HotelId");
+            ViewData["HotelId"] = new SelectList(_context.Hotels, "Name", "Name");
             return View();
         }
 
