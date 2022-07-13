@@ -34,7 +34,16 @@ namespace HotelBookingManagement
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddAuthentication()
+                .AddGoogle(options => {
+                    options.ClientId = Configuration.GetSection("Authentication:Google")["ClientId"];
+                    options.ClientSecret = Configuration.GetSection("Authentication:Google")["ClientSecret"];
+                });
+
+            services.AddSession();
+
             services.AddControllersWithViews();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

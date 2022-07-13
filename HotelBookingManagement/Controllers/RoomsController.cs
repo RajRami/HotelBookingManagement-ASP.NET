@@ -9,9 +9,11 @@ using HotelBookingManagement.Data;
 using HotelBookingManagement.Models;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HotelBookingManagement.Controllers
 {
+    [Authorize]
     public class RoomsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -28,6 +30,7 @@ namespace HotelBookingManagement.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
+        [AllowAnonymous]
         // GET: Rooms/Details/5
         public async Task<IActionResult> Details(int? id)
         {

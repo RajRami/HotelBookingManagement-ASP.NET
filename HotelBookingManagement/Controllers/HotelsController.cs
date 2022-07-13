@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using HotelBookingManagement.Data;
 using HotelBookingManagement.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HotelBookingManagement.Controllers
 {
+    [Authorize]
     public class HotelsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -25,6 +27,7 @@ namespace HotelBookingManagement.Controllers
             return View(await _context.Hotels.ToListAsync());
         }
 
+        [AllowAnonymous]
         // GET: Hotels/Details/5
         public async Task<IActionResult> Details(int? id)
         {
