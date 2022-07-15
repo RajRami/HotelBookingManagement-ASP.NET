@@ -5,4 +5,4 @@ Registration of newcomers and keeping track of their records.
 <p>Explore various rooms and enjoy the amenities you get after booking..!</p>
 
 <h2>Note: </h2>
-<p>My website is working on local server because I deployed it on two different server but unable to get SSL certificate and that prevents me to add redirect URI in google cloud.</p>
+<p>My website is working on local server because I deployed it on two different server but unable to get SSL certificate and that prevents me to add redirect URI in google cloud and it create an issue with third party authentication.</p>
