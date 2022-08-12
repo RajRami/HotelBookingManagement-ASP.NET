@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.filenesting.json = .filenesting.json
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HotelBookingManagementTests", "HotelBookingManagementTests\HotelBookingManagementTests.csproj", "{31F3DDDD-04DF-424F-84CD-DDA7D0961C92}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,6 +22,10 @@ Global
 		{45C7A802-8348-447B-85E9-C74E62B4C455}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45C7A802-8348-447B-85E9-C74E62B4C455}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45C7A802-8348-447B-85E9-C74E62B4C455}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31F3DDDD-04DF-424F-84CD-DDA7D0961C92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31F3DDDD-04DF-424F-84CD-DDA7D0961C92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31F3DDDD-04DF-424F-84CD-DDA7D0961C92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31F3DDDD-04DF-424F-84CD-DDA7D0961C92}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
